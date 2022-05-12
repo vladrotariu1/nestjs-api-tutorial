@@ -1,10 +1,11 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-import { BookmarkModule } from './bookmark/bookmark.module';
 import { DbClientModule } from './db-client/db-client.module';
 import { APP_PIPE } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
+import { RouletteModule } from './roulette/roulette.module';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
     imports: [
@@ -13,8 +14,9 @@ import { ConfigModule } from '@nestjs/config';
         }),
         AuthModule,
         UserModule,
-        BookmarkModule,
         DbClientModule,
+        RouletteModule,
+        ScheduleModule.forRoot(),
     ],
     providers: [
         {
