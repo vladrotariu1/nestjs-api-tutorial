@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Cron, CronExpression } from '@nestjs/schedule';
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class RouletteService {
@@ -13,8 +13,8 @@ export class RouletteService {
         return this.nextRollTime;
     }
 
-    @Cron(CronExpression.EVERY_10_SECONDS)
+    @Cron('*/20 * * * * *')
     setNextRollTime() {
-        this.nextRollTime = Date.now();
+        this.nextRollTime = Date.now() + 20000;
     }
 }

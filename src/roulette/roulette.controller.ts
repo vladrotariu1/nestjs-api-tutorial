@@ -7,6 +7,8 @@ export class RouletteController {
 
     @Get('next-roll')
     nextRoll() {
-        return { nextRoll: this.rouletteService.nextRoll() };
+        return {
+            nextRoll: (this.rouletteService.nextRoll() - Date.now()) / 1000,
+        };
     }
 }
