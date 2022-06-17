@@ -5,10 +5,22 @@ import { RouletteService } from './roulette.service';
 export class RouletteController {
     constructor(private rouletteService: RouletteService) {}
 
-    @Get('next-roll')
-    nextRoll() {
+    @Get('next-roll/time')
+    nextRollTime() {
         return {
-            nextRoll: (this.rouletteService.nextRoll() - Date.now()) / 1000,
+            nextRollTime: (this.rouletteService.nextRoll() - Date.now()) / 1000,
         };
+    }
+
+    @Get('next-roll/acceleration')
+    nextRollAcceleration() {
+        return {
+            nextRollAcceleration: this.rouletteService.getAccelerationTime(),
+        };
+    }
+
+    @Get('props')
+    getRouletteProps() {
+        return this.rouletteService.getRouletteProps();
     }
 }
