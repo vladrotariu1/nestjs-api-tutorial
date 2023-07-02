@@ -7,16 +7,12 @@ export class RouletteController {
 
     @Get('next-roll/time')
     nextRollTime() {
-        return {
-            nextRollTime: (this.rouletteService.nextRoll() - Date.now()) / 1000,
-        };
+        return this.rouletteService.nextRoll();
     }
 
-    @Get('next-roll/acceleration')
+    @Get('next-roll/positions-array')
     nextRollAcceleration() {
-        return {
-            nextRollAcceleration: this.rouletteService.getAccelerationTime(),
-        };
+        return this.rouletteService.getNextRollPositionsArray();
     }
 
     @Get('props')
